@@ -20,9 +20,16 @@ medicalquestion = APIRouter()
 # ╚════════════════════════════════════════════════════════════╝
 from api.schemas import QuestionInput, ResponseChatBot
 
-from rag.pipeline import build_rag_pipeline
-
 from pathlib import Path
+from functools import lru_cache
+
+
+# Build the pipeline once then reuse it
+@lru_cache(maxsize=1)
+def get_rag_pipeline():
+    from rag.pipeline import build_rag_pipeline
+
+    return build_rag_pipeline()
 
 
 @medicalquestion.post(
@@ -32,7 +39,7 @@ from pathlib import Path
 )
 def question(input: QuestionInput) -> ResponseChatBot:
 
-    rag = build_rag_pipeline()
+    rag = get_rag_pipeline()
     response = rag.invoke({"input": input.text})
 
     return ResponseChatBot(
