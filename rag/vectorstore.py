@@ -6,15 +6,12 @@ from pinecone import Pinecone, ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
 
 from rag.embeddings import download_embeddings
-from rag.chunker import text_splitter
 
 # ── API Keys ──────────────────────────────────────────────────
 PINECONE_API_KEY = settings.PINECONE_API_KEY
-OPENAI_API_KEY = settings.OPENAI_API_KEY
 
 
 # ── Check our pinecone account ──────────────────────────────────────────────────
-pinecone_api_key = PINECONE_API_KEY
 pinecone_account = Pinecone(api_key=PINECONE_API_KEY)
 
 # ── Create our index here instead of in the Picone console ──────────────────────────────────────────────────

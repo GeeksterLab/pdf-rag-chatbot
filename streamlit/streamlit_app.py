@@ -290,6 +290,17 @@ st.markdown(
             box-shadow: 0 0 22px rgba(25, 231, 247, 0.06);
         }
 
+        [data-testid="stChatInput"] textarea,
+        [data-testid="stChatInput"] textarea:focus {
+            color: #111827 !important;
+            caret-color: #111827 !important;
+        }
+
+        [data-testid="stChatInput"] textarea::placeholder {
+            color: #5f6b7a !important;
+            opacity: 1 !important;
+        }
+
         .source-box {
             border: 1px solid rgba(25, 231, 247, 0.22);
             background: rgba(2, 15, 27, 0.70);
