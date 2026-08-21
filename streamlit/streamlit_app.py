@@ -17,7 +17,7 @@ MEDICAL_QUESTION_ENDPOINT = f"{API_URL}/medicalquestion"
 HEALTH_ENDPOINT = f"{API_URL}/health"
 
 st.set_page_config(
-    page_title="Medical RAG Assistant",
+    page_title="Medical RAG ChatBot",
     page_icon="🩺",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -636,7 +636,7 @@ st.markdown(
             <div class="hero-brand">
                 <div class="hero-icon">♡✚</div>
                 <div>
-                    <div class="hero-title">Medical RAG Assistant</div>
+                    <div class="hero-title">Medical RAG ChatBot</div>
                     <div class="hero-subtitle">
                         Document-grounded clinical AI · Evidence retrieved from the indexed knowledge base
                     </div>
