@@ -2,6 +2,7 @@ from pathlib import Path
 
 
 import httpx
+import os
 import streamlit as st
 from pypdf import PdfReader
 
@@ -12,7 +13,18 @@ from pypdf import PdfReader
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = PROJECT_ROOT / "data"
 
-API_URL = "http://127.0.0.1:8003"
+
+def get_api_url() -> str:
+    try:
+        secret_api_url = st.secrets.get("API_URL")
+    except FileNotFoundError:
+        secret_api_url = None
+
+    api_url = secret_api_url or os.getenv("API_URL") or "http://127.0.0.1:8003"
+    return api_url.rstrip("/")
+
+
+API_URL = get_api_url()
 MEDICAL_QUESTION_ENDPOINT = f"{API_URL}/medicalquestion"
 HEALTH_ENDPOINT = f"{API_URL}/health"
 
