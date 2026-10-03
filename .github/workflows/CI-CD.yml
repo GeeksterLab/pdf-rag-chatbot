@@ -100,7 +100,7 @@ jobs:
           image: ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.GAR_REPOSITORY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
           flags: >-
             --cpu=1
-            --memory=1Gi
+            --memory=2Gi
             --min-instances=0
             --max-instances=1
             --timeout=300s
